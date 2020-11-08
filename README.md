@@ -38,31 +38,29 @@ cd fullstack-graphql-airbnb-clone
 yarn
 ```
 
-4. Start PostgreSQL server
-5. Create database called `graphql-ts-server-boilerplate`
+4. Start the postgre server and the redis server
 
 ```
-createdb graphql-ts-server-boilerplate
+docker-compose up
 ```
 
-6. [Add a user](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e) with the username `postgres` and and no password. (You can change what these values are in the [ormconfig.json](https://github.com/benawad/graphql-ts-server-boilerplate/blob/master/ormconfig.json))
+5. The default username/password `postgres` could be changed in docker-compose.yml and ormconfig.json
 
-7. Connect to the database with `psql` and add the uuid extension:
+6. Connect to the database with `psql` and add the uuid extension:
 
 ```
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 ``` 
 
-8. Install and start Redis
+7. In `packages/server` create a file called `.env` and add the following line inside: `FRONTEND_HOST=http://localhost:3000`
 
-9. In `packages/server` create a file called `.env` and add the following line inside: `FRONTEND_HOST=http://localhost:3000`
+8. Run `yarn build` in `packages/common`
 
-10. Run `yarn build` in `packages/common`
+9. Run `yarn build` in `packages/controller`
 
-11. Run `yarn build` in `packages/controller`
-
-12. Get Google Maps API key and put it here https://github.com/benawad/fullstack-graphql-airbnb-clone/blob/master/packages/web/public/index.html#L14 Videos doing that: https://youtu.be/-QQnzDVcTCo and https://youtu.be/xLlIgokKiLc
-
+10. Get Google Maps API key and put it here index.html
+More infos [here](https://developers.google.com/maps/documentation/javascript/get-api-key?utm_source=google&utm_medium=cpc&utm_campaign=FY20-Q3-global-demandgen-displayonnetworkhouseads-cs-GMP_maps_contactsal_saf_v2&utm_content=text-ad-none-none-DEV_c-CRE_321592199421-ADGP_Hybrid%20%7C%20AW%20SEM%20%7C%20BKWS%20~%20Google%20Maps%20API%20Key%20EXA-KWID_43700039907225615-kwd-2615963921-userloc_9055225&utm_term=KW_google%20maps%20api%20key-ST_google%20maps%20api%20key&gclid=Cj0KCQiAy579BRCPARIsAB6QoIaBzZVrdbVHPoC-B_-W_1mP5q25KQN_ya63JwM-n5OVSFdXplbi8nwaAo0UEALw_wcB)
+Go to [Maps JavaScript API](https://console.cloud.google.com/apis/library/maps-backend.googleapis.com?q=Google%20Maps%20JavaScript%20API&id=fd73ab50-9916-4cde-a0f6-dc8be0a0d425&project=windy-furnace-180806) and click on 'Enable' to add 'Google Maps' to your projects.
 
 
 ## Usage

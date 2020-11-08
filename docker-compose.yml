@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: graphql-ts-server-boilerplate
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/data'
+
+volumes:
+  redis_data:
+    driver: local
